@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI WhatsApp Appointment Setter for Travel & Visa Teams</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #081219;
+        --bg-2: #121d2a;
+        --panel: rgba(12, 20, 31, 0.74);
+        --line: rgba(255, 255, 255, 0.08);
+        --text: #f0f6fb;
+        --muted: #b2c0d2;
+        --accent: #f1b66a;
+        --accent-2: #63d3b7;
+        --shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
+        --radius-xl: 30px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 8% 12%, rgba(99, 211, 183, 0.18), transparent 22%),
+          radial-gradient(circle at 90% 8%, rgba(241, 182, 106, 0.18), transparent 24%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 36px 36px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.24), transparent 82%);
+      }
+      .wrap {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 26px 0 40px;
+        position: relative;
+        z-index: 1;
+      }
+      .topbar, .panel {
+        border-radius: var(--radius-xl);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--panel);
+        backdrop-filter: blur(20px);
+        box-shadow: var(--shadow);
+      }
+      .topbar {
+        display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 18px;
+      }
+      .brand { display: flex; align-items: center; gap: 12px; }
+      .mark {
+        width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; font-weight: 900;
+        color: #08111c; background: linear-gradient(135deg, var(--accent), #ffd8a3);
+      }
+      .brand h1 { margin: 0; font-size: 14px; font-weight: 800; }
+      .brand p { margin: 3px 0 0; font-size: 12px; color: var(--muted); }
+      .badges { display: flex; flex-wrap: wrap; gap: 8px; }
+      .badge {
+        padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.04);
+        color: #dfe9f6; font-size: 12px; font-weight: 700;
+      }
+      .hero { margin-top: 20px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; }
+      .hero-main { padding: 34px; position: relative; overflow: hidden; }
+      .hero-main::after {
+        content: ""; position: absolute; inset: auto -90px -100px auto; width: 280px; height: 280px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(99, 211, 183, 0.2), transparent 65%);
+      }
+      .eyebrow {
+        display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px;
+        background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); color: #f2f7fc;
+        font-size: 13px; font-weight: 800;
+      }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 6px rgba(241,182,106,0.14); }
+      h2 {
+        margin: 18px 0 14px; font-family: "Source Serif 4", Georgia, serif;
+        font-size: clamp(36px, 6vw, 64px); line-height: 1.03; letter-spacing: -0.03em;
+      }
+      .lede, .card p, .feature p, .price p, .section-head p, .script-box pre, .note p, .footer {
+        color: var(--muted); line-height: 1.8; font-size: 13px;
+      }
+      .stat-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
+      .stat { padding: 16px; border-radius: 18px; background: rgba(255,255,255,0.05); border: 1px solid var(--line); }
+      .stat strong { display: block; margin-bottom: 6px; font-size: 22px; }
+      .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 18px;
+        border-radius: 14px; text-decoration: none; font-weight: 800;
+      }
+      .btn-primary { color: #08111c; background: linear-gradient(135deg, var(--accent), #ffd8a3); box-shadow: 0 18px 34px rgba(241,182,106,0.22); }
+      .btn-secondary { color: var(--text); background: rgba(255,255,255,0.06); border: 1px solid var(--line); }
+      .hero-side { padding: 22px; display: grid; gap: 12px; align-content: start; }
+      .card, .feature, .price, .script-box, .note {
+        padding: 18px; border-radius: 18px; background: rgba(255,255,255,0.05); border: 1px solid var(--line);
+      }
+      .card h3, .section-head h3, .script-box h4, .note h4 { margin: 0 0 10px; font-size: 18px; font-weight: 800; }
+      .mini-list { margin: 0; padding-left: 18px; }
+      .section { margin-top: 18px; padding: 28px; }
+      .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+      .section-head h3 { font-size: 26px; }
+      .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .tag { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; color: #f4dec1; margin-bottom: 10px; }
+      .tag::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); }
+      .pricing { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+      .label { display: inline-flex; padding: 7px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; color: #d9f7f7; background: rgba(99,211,183,0.12); }
+      .amount { margin: 10px 0 8px; font-family: "Source Serif 4", Georgia, serif; font-size: 34px; font-weight: 800; }
+      .price ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
+      .bottom { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 14px; }
+      .footer { margin-top: 22px; padding: 18px 8px 4px; text-align: center; }
+      @media (max-width: 980px) {
+        .hero, .bottom, .pricing, .stat-row, .grid-2 { grid-template-columns: 1fr; }
+        .section-head, .topbar { flex-direction: column; align-items: flex-start; }
+      }
+      @media (max-width: 640px) {
+        .wrap { width: min(100% - 18px, 1180px); padding: 10px 0 26px; }
+        .hero-main, .section, .hero-side { padding: 22px; }
+        h2 { font-size: 34px; }
+        .section-head h3 { font-size: 22px; }
+        .btn { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar panel">
+        <div class="brand">
+          <div class="mark">A</div>
+          <div>
+            <h1>AI WhatsApp Appointment Setter</h1>
+            <p>For travel, visa, and corporate booking teams</p>
+          </div>
+        </div>
+        <div class="badges">
+          <div class="badge">Books meetings</div>
+          <div class="badge">Fast follow-up</div>
+          <div class="badge">Calendar ready</div>
+          <div class="badge">Launch today</div>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-main panel">
+          <div class="eyebrow"><span class="dot"></span> High-ticket agencies already buy appointment systems</div>
+          <h2>Stop losing WhatsApp inquiries before they become booked calls.</h2>
+          <p class="lede">
+            I build a simple AI appointment setter that answers common questions, qualifies leads,
+            and books the next step. It is made for travel and visa teams that want more booked
+            calls without adding more manual work.
+          </p>
+
+          <div class="stat-row">
+            <div class="stat">
+              <strong>1 flow</strong>
+              <span>inquiry, qualification, booking, reminder</span>
+            </div>
+            <div class="stat">
+              <strong>2 channels</strong>
+              <span>WhatsApp plus landing page or calendar handoff</span>
+            </div>
+            <div class="stat">
+              <strong>$199+</strong>
+              <span>an easier entry point than a full automation build</span>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#pricing">See packages</a>
+            <a class="btn btn-secondary" href="#script">Copy outreach script</a>
+          </div>
+        </div>
+
+        <aside class="hero-side panel">
+          <div class="card">
+            <h3>What the system does</h3>
+            <ul class="mini-list">
+              <li>Answers common WhatsApp questions</li>
+              <li>Qualifies the lead before a human reply</li>
+              <li>Books a call or sends the next step</li>
+              <li>Stores the lead so follow-up does not get lost</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Best fit</h3>
+            <p>
+              Agencies already getting questions on WhatsApp, teams with a sales person who is too
+              busy, and operators who want fewer missed inquiries and more booked conversations.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section panel">
+        <div class="section-head">
+          <div>
+            <h3>Why this sells now</h3>
+            <p>
+              Appointment setting, lead capture, WhatsApp automation, and AI receptionist offers are
+              already active in the market. This package is the smallest version that still feels
+              useful immediately.
+            </p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="feature">
+            <div class="tag">Conversion</div>
+            <h4>Replies faster than a human can</h4>
+            <p>Instant answers keep the conversation alive while the team is busy with other leads.</p>
+          </div>
+          <div class="feature">
+            <div class="tag">Booking</div>
+            <h4>Turns interest into a meeting</h4>
+            <p>The main goal is not just chat. It is getting the prospect to a booked next step.</p>
+          </div>
+          <div class="feature">
+            <div class="tag">Operations</div>
+            <h4>Reduces missed follow-up</h4>
+            <p>Every lead gets tracked, so the team can see what needs a reminder or handoff.</p>
+          </div>
+          <div class="feature">
+            <div class="tag">Trust</div>
+            <h4>Looks more premium than a basic chatbot</h4>
+            <p>It feels like a booking assistant, not a toy bot.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section panel" id="pricing">
+        <div class="section-head">
+          <div>
+            <h3>Packages</h3>
+            <p>Lead with the easiest version first, then offer the full booking build after they say yes.</p>
+          </div>
+        </div>
+        <div class="pricing">
+          <article class="price">
+            <span class="label">Starter</span>
+            <h4>Booking script + flow</h4>
+            <div class="amount">$199</div>
+            <p>Best for agencies that want the wording and logic first.</p>
+            <ul>
+              <li>Conversation script</li>
+              <li>Qualification questions</li>
+              <li>Booking handoff copy</li>
+            </ul>
+          </article>
+          <article class="price">
+            <span class="label">Most likely to sell</span>
+            <h4>WhatsApp appointment setup</h4>
+            <div class="amount">$349</div>
+            <p>Best all-around offer for a first client: booking flow, lead log, reminder text.</p>
+            <ul>
+              <li>WhatsApp flow</li>
+              <li>Lead sheet / pipeline</li>
+              <li>Reminder messages</li>
+              <li>Human handoff</li>
+            </ul>
+          </article>
+          <article class="price">
+            <span class="label">White-label</span>
+            <h4>Agency-ready build</h4>
+            <div class="amount">$599</div>
+            <p>For agencies who want to resell the appointment system under their brand.</p>
+            <ul>
+              <li>Branded delivery</li>
+              <li>Calendar handoff</li>
+              <li>Handover docs</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section panel">
+        <div class="bottom">
+          <div class="script-box" id="script">
+            <h4>Outreach script</h4>
+            <pre>Hi, I built a simple AI WhatsApp appointment setter for travel and visa businesses.
+It answers common questions, qualifies the lead, and books the next step.
+
+If you want, I can send a sample flow today.
+The intro price is $199 for the script/flow version or $349 for the full setup.</pre>
+          </div>
+          <div class="note">
+            <h4>Best next move</h4>
+            <p>
+              Send this to agencies that already receive WhatsApp inquiries and want more booked calls
+              without adding more manual follow-up work.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">If they like the demo, send the WhatsApp lead-capture page and the Arabic page next.</div>
+    </div>
+  </body>
+</html>

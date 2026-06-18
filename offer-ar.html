@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>حزمة فيديوهات قصيرة لوكالات السفر والفيزا</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #eef3f8;
+        --bg-2: #e3ebf4;
+        --surface: rgba(255, 255, 255, 0.8);
+        --line: rgba(16, 32, 51, 0.12);
+        --text: #102033;
+        --muted: #5f7288;
+        --blue: #2f5f91;
+        --blue-2: #173d62;
+        --gold: #c8a46a;
+        --shadow: 0 24px 70px rgba(18, 35, 58, 0.12);
+        --radius-xl: 30px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Noto Sans Arabic", system-ui, sans-serif;
+        background:
+          radial-gradient(circle at 10% 10%, rgba(47, 95, 145, 0.12), transparent 28%),
+          radial-gradient(circle at 90% 0%, rgba(200, 164, 106, 0.14), transparent 22%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      .wrap {
+        width: min(1140px, calc(100% - 28px));
+        margin: 0 auto;
+        padding: 24px 0 40px;
+      }
+
+      .panel {
+        background: var(--surface);
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(20px);
+        box-shadow: var(--shadow);
+        border-radius: var(--radius-xl);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 18px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--blue), var(--blue-2));
+        color: #fff;
+        font-weight: 800;
+      }
+
+      .brand h1 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      .brand p {
+        margin: 2px 0 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-start;
+      }
+
+      .badge {
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(47, 95, 145, 0.12);
+        background: rgba(255, 255, 255, 0.76);
+        color: var(--blue-2);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .hero {
+        margin-top: 18px;
+        padding: 32px;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(47, 95, 145, 0.08);
+        color: var(--blue-2);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--gold);
+        box-shadow: 0 0 0 6px rgba(200, 164, 106, 0.14);
+      }
+
+      h2 {
+        margin: 18px 0 14px;
+        font-family: "Noto Naskh Arabic", serif;
+        font-size: clamp(34px, 5vw, 58px);
+        line-height: 1.08;
+      }
+
+      .lede {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.9;
+      }
+
+      .stat-row,
+      .grid-2 {
+        display: grid;
+        gap: 12px;
+      }
+
+      .stat-row {
+        margin-top: 24px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .stat,
+      .feature,
+      .side-card,
+      .pricing {
+        border-radius: 18px;
+        border: 1px solid rgba(16, 32, 51, 0.08);
+        background: rgba(255, 255, 255, 0.78);
+      }
+
+      .stat {
+        padding: 16px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 22px;
+        margin-bottom: 6px;
+      }
+
+      .stat span {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 18px;
+        border-radius: 14px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--blue), var(--blue-2));
+        color: #fff;
+        box-shadow: 0 18px 34px rgba(47, 95, 145, 0.22);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.74);
+        color: var(--blue-2);
+        border: 1px solid rgba(47, 95, 145, 0.12);
+      }
+
+      .side {
+        display: grid;
+        gap: 12px;
+        align-content: start;
+      }
+
+      .side-card {
+        padding: 18px;
+      }
+
+      .side-card h3,
+      .section h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      .side-card p,
+      .side-card li,
+      .feature p,
+      .pricing p,
+      .section p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 13px;
+      }
+
+      .list {
+        margin: 0;
+        padding: 0 20px 0 0;
+      }
+
+      .section {
+        margin-top: 18px;
+        padding: 26px;
+      }
+
+      .section-head {
+        margin-bottom: 14px;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature {
+        padding: 18px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--blue-2);
+      }
+
+      .tag::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+
+      .pricing {
+        padding: 18px;
+        background: linear-gradient(180deg, rgba(47, 95, 145, 0.08), rgba(255, 255, 255, 0.96));
+      }
+
+      .pricing strong {
+        display: block;
+        font-size: 18px;
+        margin-bottom: 6px;
+      }
+
+      .price {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .price-card {
+        padding: 16px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(16, 32, 51, 0.08);
+      }
+
+      .amount {
+        font-family: "Noto Naskh Arabic", serif;
+        font-size: 32px;
+        font-weight: 800;
+        margin: 8px 0 10px;
+      }
+
+      .footer {
+        margin-top: 18px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .grid-2,
+        .price,
+        .stat-row {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .wrap {
+          width: min(100% - 18px, 1140px);
+          padding-top: 12px;
+        }
+
+        .hero,
+        .section {
+          padding: 20px;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .cta-row {
+          display: grid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="panel topbar">
+        <div class="brand">
+          <div class="mark">V</div>
+          <div>
+            <h1>حزمة فيديوهات للسفر والفيزا</h1>
+            <p>منتج جاهز للبيع اليوم لوكالات السفر ومكاتب الفيزا</p>
+          </div>
+        </div>
+        <div class="badge-row">
+          <div class="badge">10 فيديوهات عمودية</div>
+          <div class="badge">جاهزة خلال 48 ساعة</div>
+          <div class="badge">$99 / $149</div>
+        </div>
+      </header>
+
+      <section class="panel hero">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> منتج واضح وسهل الشراء</div>
+          <h2>حوّل محتوى الفيزا والسفر إلى حزمة بيع جاهزة، بدل خدمة مبهمة.</h2>
+          <p class="lede">
+            هذه الحزمة مخصصة لوكالات السفر، مكاتب الفيزا، وشركات الخدمات التجارية.
+            العميل لا يشتري “فيديو فقط”، بل يشتري أصولًا جاهزة للنشر على TikTok وInstagram وWhatsApp وFacebook.
+          </p>
+
+          <div class="stat-row">
+            <div class="stat">
+              <strong>10</strong>
+              <span>فيديوهات قصيرة مع عناوين وCTA</span>
+            </div>
+            <div class="stat">
+              <strong>1 يوم</strong>
+              <span>يمكن إرسال عينة اليوم وبدء البيع فورًا</span>
+            </div>
+            <div class="stat">
+              <strong>$100+</strong>
+              <span>عميل واحد قد يغطي هدف اليوم</span>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#pricing">عرض الأسعار</a>
+            <a class="btn btn-secondary" href="#contact">نص الرسالة الجاهز</a>
+          </div>
+        </div>
+
+        <aside class="side">
+          <div class="side-card">
+            <h3>مناسب لمن</h3>
+            <ul class="list">
+              <li>مكاتب الفيزا</li>
+              <li>وكالات السفر</li>
+              <li>شركات السفر التجاري</li>
+            </ul>
+          </div>
+          <div class="side-card">
+            <h3>لماذا يشتريه العميل؟</h3>
+            <p>لأنه يحتاج محتوى واضح، سريع، ومخصص لجلب العملاء بدل الشرح الطويل والتصميم من الصفر.</p>
+          </div>
+          <div class="side-card">
+            <h3>أفضل خطوة اليوم</h3>
+            <p>أرسل عينة واحدة + سعر واضح + طلب رد سريع. لا تبدأ بتفاصيل كثيرة.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="panel section">
+        <div class="section-head">
+          <h3>ماذا تحتوي الحزمة؟</h3>
+          <p>الحزمة مبنية على نفس الأسلوب الذي استخدمته في عرض الفيديوهات الحالية: لغة عملية، ثقة عالية، ورسائل مباشرة.</p>
+        </div>
+        <div class="grid-2">
+          <div class="feature">
+            <div class="tag">الرسالة</div>
+            <h3>محتوى يتكلم بلغة العميل</h3>
+            <p>مواد، متابعة، خطر، دفع، نسخة، تسليم، وإجراء. هذه الكلمات هي التي يفهمها صاحب العمل فورًا.</p>
+          </div>
+          <div class="feature">
+            <div class="tag">السرعة</div>
+            <h3>جاهز للإرسال اليوم</h3>
+            <p>يمكنك استخدامه كعينة، كصفحة هبوط، أو كمنتج أبيض العلامة لعملائك.</p>
+          </div>
+          <div class="feature">
+            <div class="tag">البيع</div>
+            <h3>ابدأ بصفقة صغيرة</h3>
+            <p>اعرض $99 كتجربة، ثم انتقل إلى $149 للحزمة الكاملة، و$249 للنسخة البيضاء.</p>
+          </div>
+          <div class="feature">
+            <div class="tag">التطبيق</div>
+            <h3>مناسب للنشر على أكثر من منصة</h3>
+            <p>TikTok، Instagram Reels، WhatsApp Status، Facebook، وحتى الإرسال المباشر للعملاء المحتملين.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="panel section">
+        <div class="section-head">
+          <h3>الأسعار</h3>
+          <p>إذا كنت تريد أول دفعة اليوم، ركز على الحزمة المتوسطة، ثم قدّم التجربة كخيار دخول.</p>
+        </div>
+        <div class="price">
+          <div class="price-card">
+            <strong>تجربة</strong>
+            <div class="amount">$99</div>
+            <p>3 فيديوهات + 3 عناوين + 3 CTA. مناسب لاختبار التعاون.</p>
+          </div>
+          <div class="price-card">
+            <strong>الحزمة الكاملة</strong>
+            <div class="amount">$149</div>
+            <p>10 فيديوهات + 10 عناوين + 10 CTA. هذه هي الحزمة التي يجب دفعها اليوم.</p>
+          </div>
+          <div class="price-card">
+            <strong>نسخة بيضاء</strong>
+            <div class="amount">$249</div>
+            <p>مع اسم العميل، الشعار، والألوان الخاصة به. مناسبة لإعادة البيع.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="panel section">
+        <div class="section-head">
+          <h3>رسالة جاهزة للإرسال</h3>
+          <p>يمكنك نسخ هذه الرسالة وإرسالها مباشرة عبر البريد أو واتساب.</p>
+        </div>
+        <div class="side-card">
+          <p>
+            مرحبًا،<br /><br />
+            أعددت حزمة فيديوهات قصيرة مخصصة لوكالات السفر ومكاتب الفيزا.<br />
+            تتضمن 10 فيديوهات عمودية + 10 عناوين + 10 CTA، وجاهزة للنشر على TikTok / Instagram / WhatsApp.<br /><br />
+            إذا رغبت، أستطيع إرسال عينة اليوم. سعر التجربة $99، والحزمة الكاملة $149.<br /><br />
+            إذا يناسبك، أرسل لك العينة الآن.
+          </p>
+        </div>
+      </section>
+
+      <div class="footer">هذه الصفحة مخصصة لتحويل الخدمة إلى شيء واضح وسريع الشراء، ثم إرسالها مباشرة للعملاء المحتملين.</div>
+    </div>
+  </body>
+</html>

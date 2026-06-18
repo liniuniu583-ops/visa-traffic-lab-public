@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>今天可交付的签证/旅行社短视频包</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #eef3f8;
+        --bg-2: #e5edf7;
+        --surface: rgba(255, 255, 255, 0.76);
+        --surface-strong: #ffffff;
+        --line: rgba(24, 45, 72, 0.12);
+        --text: #102033;
+        --muted: #5d6f85;
+        --blue: #2f5f91;
+        --blue-2: #173d62;
+        --gold: #c8a46a;
+        --gold-soft: rgba(200, 164, 106, 0.18);
+        --shadow: 0 24px 70px rgba(18, 35, 58, 0.12);
+        --radius-xl: 30px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
+        --radius-sm: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        font-family: "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 10% 10%, rgba(47, 95, 145, 0.12), transparent 26%),
+          radial-gradient(circle at 90% 0%, rgba(200, 164, 106, 0.14), transparent 22%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(16, 32, 51, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(16, 32, 51, 0.02) 1px, transparent 1px);
+        background-size: 34px 34px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.12), transparent 70%);
+      }
+
+      .wrap {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 44px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.52);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 10px 24px rgba(16, 32, 51, 0.06);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 13px;
+        display: grid;
+        place-items: center;
+        color: #f8fbff;
+        background: linear-gradient(135deg, var(--blue), var(--blue-2));
+        box-shadow: 0 12px 28px rgba(47, 95, 145, 0.26);
+        font-weight: 800;
+      }
+
+      .brand-copy h1 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .brand-copy p {
+        margin: 2px 0 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .badge {
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        border: 1px solid rgba(47, 95, 145, 0.12);
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--blue-2);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 22px;
+        margin-top: 22px;
+      }
+
+      .panel {
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        background: var(--surface);
+        backdrop-filter: blur(20px);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-main {
+        padding: 34px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-main::after {
+        content: "";
+        position: absolute;
+        inset: auto -80px -100px auto;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(200, 164, 106, 0.24), transparent 68%);
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(47, 95, 145, 0.08);
+        color: var(--blue-2);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .eyebrow-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--gold);
+        box-shadow: 0 0 0 6px rgba(200, 164, 106, 0.14);
+      }
+
+      h2 {
+        margin: 18px 0 14px;
+        font-family: "Noto Serif SC", serif;
+        font-size: clamp(34px, 6vw, 62px);
+        line-height: 1.04;
+        letter-spacing: -0.03em;
+      }
+
+      .lede {
+        margin: 0;
+        max-width: 720px;
+        font-size: 17px;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      .stat-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .stat {
+        padding: 16px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(16, 32, 51, 0.08);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 22px;
+        line-height: 1.1;
+        margin-bottom: 6px;
+      }
+
+      .stat span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 18px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-weight: 800;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        color: #f8fbff;
+        background: linear-gradient(135deg, var(--blue), var(--blue-2));
+        box-shadow: 0 18px 34px rgba(47, 95, 145, 0.22);
+      }
+
+      .btn-secondary {
+        color: var(--blue-2);
+        background: rgba(255, 255, 255, 0.74);
+        border: 1px solid rgba(47, 95, 145, 0.12);
+      }
+
+      .hero-side {
+        padding: 24px;
+        display: grid;
+        gap: 14px;
+        align-content: start;
+      }
+
+      .mini-card {
+        padding: 18px;
+        border-radius: 18px;
+        background: var(--surface-strong);
+        border: 1px solid rgba(16, 32, 51, 0.08);
+      }
+
+      .mini-card h3 {
+        margin: 0 0 10px;
+        font-size: 16px;
+      }
+
+      .mini-card p,
+      .mini-card li {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .mini-list {
+        display: grid;
+        gap: 8px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .mini-list li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .mini-list li::before {
+        content: "•";
+        color: var(--gold);
+        font-weight: 900;
+        line-height: 1.2;
+      }
+
+      .section {
+        margin-top: 22px;
+        padding: 28px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .section-head h3 {
+        margin: 0;
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .section-head p {
+        margin: 0;
+        max-width: 620px;
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 14px;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .feature {
+        padding: 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(16, 32, 51, 0.08);
+      }
+
+      .feature .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--blue-2);
+        margin-bottom: 10px;
+      }
+
+      .feature .tag::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+
+      .feature h4 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .pricing {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .price {
+        padding: 20px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(16, 32, 51, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .price.featured {
+        background: linear-gradient(180deg, rgba(47, 95, 145, 0.08), rgba(255, 255, 255, 0.96));
+        border-color: rgba(47, 95, 145, 0.18);
+        transform: translateY(-4px);
+      }
+
+      .price .label {
+        display: inline-flex;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(200, 164, 106, 0.14);
+        color: #7b5a2d;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .price h4 {
+        margin: 12px 0 6px;
+        font-size: 18px;
+      }
+
+      .amount {
+        font-family: "Noto Serif SC", serif;
+        font-size: 34px;
+        font-weight: 800;
+        margin: 10px 0 6px;
+      }
+
+      .price p {
+        margin: 0 0 12px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .price ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 8px;
+      }
+
+      .price li {
+        display: flex;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .price li::before {
+        content: "✓";
+        color: var(--blue);
+        font-weight: 900;
+      }
+
+      .bottom {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .script-box {
+        padding: 20px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(16, 32, 51, 0.08);
+      }
+
+      .script-box h4 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+
+      .script-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+        font-family: inherit;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+      }
+
+      .note {
+        padding: 20px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, rgba(47, 95, 145, 0.1), rgba(200, 164, 106, 0.12));
+        border: 1px solid rgba(47, 95, 145, 0.12);
+      }
+
+      .note h4 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+
+      .note p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+      }
+
+      .footer {
+        margin-top: 22px;
+        padding: 18px 8px 4px;
+        color: var(--muted);
+        font-size: 12px;
+        text-align: center;
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .bottom,
+        .pricing {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head,
+        .topbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .badge-row {
+          justify-content: flex-start;
+        }
+
+        .stat-row,
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .wrap {
+          width: min(100% - 20px, 1180px);
+          padding-top: 14px;
+        }
+
+        .hero-main,
+        .section,
+        .hero-side {
+          padding: 20px;
+        }
+
+        h2 {
+          font-size: 34px;
+        }
+
+        .section-head h3 {
+          font-size: 22px;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .cta-row {
+          display: grid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">V</div>
+          <div class="brand-copy">
+            <h1>Visa Social Pack</h1>
+            <p>今天可交付的签证/旅行社内容产品</p>
+          </div>
+        </div>
+        <div class="badge-row">
+          <div class="badge">10 条竖屏视频</div>
+          <div class="badge">48 小时内可交付</div>
+          <div class="badge">$99 起售</div>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="panel hero-main">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> 今天能卖出去的，不是“复杂服务”，而是一个明确的内容包</div>
+          <h2>把签证/旅行社的获客视频，直接打包成一套可卖产品。</h2>
+          <p class="lede">
+            这是一套专门面向签证服务、旅行社、跨境商务服务商的短视频内容包。我们用“高信任、低解释成本”的方式，直接告诉客户：
+            你买到的是能马上发的 10 条视频、10 组标题和 CTA，不是空泛的创意提案。
+          </p>
+
+          <div class="stat-row">
+            <div class="stat">
+              <strong>10</strong>
+              <span>条竖屏视频，主题围绕流程、材料、跟进、风险、财务、权限</span>
+            </div>
+            <div class="stat">
+              <strong>1 天</strong>
+              <span>今天可以发样片、今天可以收定金、今天可以开工</span>
+            </div>
+            <div class="stat">
+              <strong>$100+</strong>
+              <span>一个客户就能覆盖你今天的目标金额</span>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#pricing">看价格和交付</a>
+            <a class="btn btn-secondary" href="#outreach">看外联话术</a>
+          </div>
+        </div>
+
+        <aside class="panel hero-side">
+          <div class="mini-card">
+            <h3>适合卖给谁</h3>
+            <ul class="mini-list">
+              <li>中国签证服务商</li>
+              <li>旅行社 / 商务出行代理</li>
+              <li>做阿语市场的跨境服务团队</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <h3>买家真正买的是什么</h3>
+            <p>不是“视频”，而是一个马上能投放、能发朋友圈、能发 Instagram / TikTok / WhatsApp 的获客资产。</p>
+          </div>
+          <div class="mini-card">
+            <h3>今天最优打法</h3>
+            <ul class="mini-list">
+              <li>发 1 个样片 + 1 页报价单</li>
+              <li>私聊 20 个相关机构</li>
+              <li>先收 $50-$99 定金，再补齐全包</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <section class="panel section">
+        <div class="section-head">
+          <div>
+            <h3>为什么这个产品有机会今天成交</h3>
+            <p>我把平台侧的需求和你仓库里的资产拼在一起看，结论是：垂直内容包比泛服务更容易卖，原因是客户能立刻理解价值。</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="feature">
+            <div class="tag">市场验证</div>
+            <h4>同类买家已经在买“视频 + 社媒内容”</h4>
+            <p>像 travel agency / social media / video editing 这类需求在自由职业平台上一直存在，预算经常落在几十到几百美元的单次项目区间。</p>
+          </div>
+          <div class="feature">
+            <div class="tag">垂直优势</div>
+            <h4>你手里正好有“签证业务”语境的现成素材</h4>
+            <p>这比从零做一个通用短视频包更容易成交，因为客户一眼就能看懂是给谁用、解决什么问题、发到哪里。</p>
+          </div>
+          <div class="feature">
+            <div class="tag">交付速度</div>
+            <h4>现成的 10 条视频可以直接包装成“今天可交付”</h4>
+            <p>你仓库里已经有多条讲流程、材料、跟进、风险、AI、权限、对账的短视频脚本和成片基础，拿来卖比重新制作快得多。</p>
+          </div>
+          <div class="feature">
+            <div class="tag">成交方式</div>
+            <h4>先卖小单，再卖整包</h4>
+            <p>最容易的成交不是一次报很大，而是先卖一个 $99 的启动包，随后再把白标版本、定制版本和月度更新卖出去。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="panel section">
+        <div class="section-head">
+          <div>
+            <h3>三档报价，今天就能发出去</h3>
+            <p>如果你只想拿到第一笔钱，优先推中间档。对方更容易理解，且金额足够覆盖一天的目标。</p>
+          </div>
+        </div>
+
+        <div class="pricing">
+          <div class="price">
+            <span class="label">启动单</span>
+            <h4>单次试单</h4>
+            <div class="amount">$99</div>
+            <p>适合对方先试合作，快速验证素材风格和账号调性。</p>
+            <ul>
+              <li>3 条视频</li>
+              <li>3 条标题 + CTA</li>
+              <li>24 小时内开始制作</li>
+            </ul>
+          </div>
+
+          <div class="price featured">
+            <span class="label">今天主推</span>
+            <h4>完整内容包</h4>
+            <div class="amount">$149</div>
+            <p>你今天最该卖的版本。客户能直接拿去发，不用再解释。</p>
+            <ul>
+              <li>10 条视频</li>
+              <li>10 条标题 + 封面字 + CTA</li>
+              <li>适合白标转售</li>
+            </ul>
+          </div>
+
+          <div class="price">
+            <span class="label">白标升级</span>
+            <h4>代理版</h4>
+            <div class="amount">$249</div>
+            <p>适合已经有客户的代理或团队，可以加品牌、加联系方式、加专属语气。</p>
+            <ul>
+              <li>全包 10 条视频</li>
+              <li>品牌色 / Logo / 文案替换</li>
+              <li>可按客户名义交付</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel section">
+        <div class="section-head">
+          <div>
+            <h3>你仓库里已经有的资产</h3>
+            <p>这些文件可以直接当成“样片资产”发给潜在客户，让对方先看见你能交付什么。</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="feature">
+            <div class="tag">脚本包</div>
+            <h4>10 条社媒文案</h4>
+            <p>对应你现在的短视频主题，已经包含标题、封面字、口播和 CTA，能直接拿来发。</p>
+          </div>
+          <div class="feature">
+            <div class="tag">视频资产</div>
+            <h4>10 条竖屏视频</h4>
+            <p>可作为样片、社媒广告，或打包成“今天可交付”的内容产品对外销售。</p>
+          </div>
+          <div class="feature">
+            <div class="tag">设计风格</div>
+            <h4>高信任的蓝灰 корпоратив 样式</h4>
+            <p>这类视觉特别适合签证、出入境、商务服务，因为它传达的是专业和可靠，而不是娱乐感。</p>
+          </div>
+          <div class="feature">
+            <div class="tag">品牌语境</div>
+            <h4>签证流程、材料、跟进、风险、财务</h4>
+            <p>你的现成内容不是泛内容，而是业务流程语言，客户更容易判断“这就是给我们做的”。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="outreach" class="panel section bottom">
+        <div class="script-box">
+          <h4>可以直接复制的外联话术</h4>
+          <pre>你好，我这边做了一套专门给签证/旅行社用的短视频内容包，今天就能发样片。
+
+内容包括：
+10 条竖屏视频
+10 条标题 + 封面字 + CTA
+适合直接发到 TikTok / Instagram / WhatsApp / 朋友圈
+
+如果你愿意，我可以先发你 1 条样片看风格。
+今天首批价格 $99 起，完整包是 $149。
+
+如果你想试，我现在就把样片发给你。</pre>
+        </div>
+
+        <div class="note">
+          <h4>今天的执行顺序</h4>
+          <p>
+            1. 发 20 个目标机构。 2. 先用样片换回复。 3. 回复后先收定金。 4. 有人问价格，就先推 $149 完整包。 5.
+            对方犹豫时，再给 $99 启动包。
+          </p>
+        </div>
+      </section>
+
+      <div class="footer">
+        这页是为了把“抽象能力”变成“可卖产品”而做的。你可以直接用它去发给潜在客户，或者把它搬到你的本地站点 / SaaS 页面里。
+      </div>
+    </div>
+  </body>
+</html>

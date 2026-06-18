@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp Lead Capture for Travel & Visa Agencies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #09131f;
+        --bg-2: #111f31;
+        --panel: rgba(11, 21, 35, 0.72);
+        --panel-strong: #0f1a2b;
+        --line: rgba(255, 255, 255, 0.08);
+        --text: #eff5fb;
+        --muted: #aebcd0;
+        --accent: #f1b66a;
+        --accent-2: #59c3c3;
+        --accent-3: #7aa7ff;
+        --shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
+        --radius-xl: 30px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 8% 12%, rgba(89, 195, 195, 0.2), transparent 22%),
+          radial-gradient(circle at 90% 8%, rgba(241, 182, 106, 0.18), transparent 24%),
+          radial-gradient(circle at 70% 80%, rgba(122, 167, 255, 0.12), transparent 20%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 36px 36px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.24), transparent 82%);
+      }
+
+      .wrap {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 26px 0 40px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(8, 16, 28, 0.64);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        color: #08111c;
+        background: linear-gradient(135deg, var(--accent), #ffd8a3);
+      }
+
+      .brand h1 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .brand p {
+        margin: 3px 0 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .badge {
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        color: #dfe9f6;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .hero {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 18px;
+      }
+
+      .panel {
+        border-radius: var(--radius-xl);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--panel);
+        backdrop-filter: blur(20px);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-main {
+        padding: 34px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-main::after {
+        content: "";
+        position: absolute;
+        inset: auto -90px -100px auto;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(89, 195, 195, 0.24), transparent 65%);
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #f2f7fc;
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 6px rgba(241, 182, 106, 0.14);
+      }
+
+      h2 {
+        margin: 18px 0 14px;
+        font-family: "Source Serif 4", Georgia, serif;
+        font-size: clamp(36px, 6vw, 64px);
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+      }
+
+      .lede {
+        margin: 0;
+        max-width: 720px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.8;
+      }
+
+      .stat-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .stat {
+        padding: 16px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--line);
+      }
+
+      .stat strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 22px;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 18px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-weight: 800;
+      }
+
+      .btn-primary {
+        color: #09131f;
+        background: linear-gradient(135deg, var(--accent), #ffd8a3);
+        box-shadow: 0 18px 34px rgba(241, 182, 106, 0.22);
+      }
+
+      .btn-secondary {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--line);
+      }
+
+      .hero-side {
+        padding: 22px;
+        display: grid;
+        gap: 12px;
+        align-content: start;
+      }
+
+      .card {
+        padding: 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--line);
+      }
+
+      .card h3,
+      .section-head h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      .card p,
+      .card li,
+      .feature p,
+      .price p,
+      .section-head p,
+      .footer {
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 13px;
+      }
+
+      .mini-list {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .section {
+        margin-top: 18px;
+        padding: 28px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .section-head h3 {
+        font-size: 26px;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .feature {
+        padding: 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--line);
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 800;
+        color: #f4dec1;
+        margin-bottom: 10px;
+      }
+
+      .tag::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent-2);
+      }
+
+      .feature h4 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+
+      .pricing {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .price {
+        padding: 20px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--line);
+      }
+
+      .price.featured {
+        background: linear-gradient(180deg, rgba(89, 195, 195, 0.09), rgba(255, 255, 255, 0.05));
+        transform: translateY(-4px);
+        border-color: rgba(89, 195, 195, 0.2);
+      }
+
+      .label {
+        display: inline-flex;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+        color: #d9f7f7;
+        background: rgba(89, 195, 195, 0.12);
+      }
+
+      .price h4 {
+        margin: 12px 0 6px;
+        font-size: 18px;
+      }
+
+      .amount {
+        margin: 10px 0 8px;
+        font-family: "Source Serif 4", Georgia, serif;
+        font-size: 34px;
+        font-weight: 800;
+      }
+
+      .price ul {
+        margin: 0;
+        padding-left: 18px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .bottom {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .script-box,
+      .note {
+        padding: 20px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--line);
+      }
+
+      .script-box h4,
+      .note h4 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+
+      .script-box pre,
+      .note p {
+        margin: 0;
+        white-space: pre-wrap;
+        font-family: inherit;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+      }
+
+      .footer {
+        margin-top: 22px;
+        padding: 18px 8px 4px;
+        text-align: center;
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .bottom,
+        .pricing,
+        .stat-row,
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head,
+        .topbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .badges {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .wrap {
+          width: min(100% - 18px, 1180px);
+          padding: 10px 0 26px;
+        }
+
+        .hero-main,
+        .section,
+        .hero-side {
+          padding: 22px;
+        }
+
+        h2 {
+          font-size: 34px;
+        }
+
+        .section-head h3 {
+          font-size: 22px;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar panel">
+        <div class="brand">
+          <div class="mark">W</div>
+          <div>
+            <h1>WhatsApp Lead Capture System</h1>
+            <p>Built for travel, visa, and corporate booking teams</p>
+          </div>
+        </div>
+        <div class="badges">
+          <div class="badge">Arabic landing page</div>
+          <div class="badge">WhatsApp bot flow</div>
+          <div class="badge">Lead tracking sheet</div>
+          <div class="badge">Same-day launch</div>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-main panel">
+          <div class="eyebrow"><span class="dot"></span> High-intent buyers already ask for this</div>
+          <h2>Turn travel inquiries into replies, bookings, and follow-up conversations.</h2>
+          <p class="lede">
+            I build a simple system that helps visa agencies and travel companies stop losing WhatsApp
+            leads. It combines a clean Arabic/English landing page, fast replies, and a follow-up flow
+            that turns incoming messages into tracked leads.
+          </p>
+
+          <div class="stat-row">
+            <div class="stat">
+              <strong>24h</strong>
+              <span>for a working lead-capture page and message flow</span>
+            </div>
+            <div class="stat">
+              <strong>3 parts</strong>
+              <span>landing page, WhatsApp response flow, lead sheet</span>
+            </div>
+            <div class="stat">
+              <strong>$149+</strong>
+              <span>starter offer that is easier to say yes to than a big build</span>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#pricing">See packages</a>
+            <a class="btn btn-secondary" href="#script">Copy outreach script</a>
+          </div>
+        </div>
+
+        <aside class="hero-side panel">
+          <div class="card">
+            <h3>What the buyer gets</h3>
+            <ul class="mini-list">
+              <li>Arabic or bilingual landing page</li>
+              <li>WhatsApp button and quick-reply flow</li>
+              <li>Lead sheet for names, status, and follow-up</li>
+              <li>Simple copy for ads, DMs, and website</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Best fit</h3>
+            <p>
+              Travel agencies, visa services, corporate travel desks, conference support teams, and
+              any business that already receives inquiries on WhatsApp but does not track them well.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section panel">
+        <div class="section-head">
+          <div>
+            <h3>Why this sells now</h3>
+            <p>
+              Market demand is already visible in travel/visa jobs asking for WhatsApp integration,
+              lead generation, landing pages, and booking flows. This offer sits exactly in that
+              overlap.
+            </p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="feature">
+            <div class="tag">Conversion</div>
+            <h4>Less lost leads</h4>
+            <p>People tap WhatsApp, ask one question, and get a clear reply path instead of disappearing.</p>
+          </div>
+          <div class="feature">
+            <div class="tag">Trust</div>
+            <h4>More credible than a simple brochure site</h4>
+            <p>Travel buyers want reassurance, fast answers, and proof that the team responds quickly.</p>
+          </div>
+          <div class="feature">
+            <div class="tag">Speed</div>
+            <h4>Same-day asset you can send</h4>
+            <p>A demo page and message flow are easier to show than a vague "marketing service" pitch.</p>
+          </div>
+          <div class="feature">
+            <div class="tag">Operations</div>
+            <h4>Lead tracking without chaos</h4>
+            <p>Every inquiry gets a status, follow-up note, and a next action, so nobody relies on memory.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section panel" id="pricing">
+        <div class="section-head">
+          <div>
+            <h3>Packages</h3>
+            <p>Pick a smaller entry offer first. It is easier to close a starter than a full custom build.</p>
+          </div>
+        </div>
+        <div class="pricing">
+          <article class="price">
+            <span class="label">Starter</span>
+            <h4>Lead page audit + copy</h4>
+            <div class="amount">$149</div>
+            <p>Best for teams that already have a page but need better messaging and structure.</p>
+            <ul>
+              <li>Landing page review</li>
+              <li>WhatsApp CTA copy</li>
+              <li>Lead form text</li>
+            </ul>
+          </article>
+          <article class="price featured">
+            <span class="label">Most likely to sell</span>
+            <h4>Arabic lead-capture launch</h4>
+            <div class="amount">$299</div>
+            <p>Best all-around offer for a first client: page, CTA flow, and lead tracking sheet.</p>
+            <ul>
+              <li>Arabic or bilingual page</li>
+              <li>WhatsApp quick-reply flow</li>
+              <li>Tracking sheet setup</li>
+              <li>Follow-up messages</li>
+            </ul>
+          </article>
+          <article class="price">
+            <span class="label">White-label</span>
+            <h4>Agency-ready system</h4>
+            <div class="amount">$499</div>
+            <p>For agencies or partners who want to resell it as a packaged service.</p>
+            <ul>
+              <li>Branded delivery</li>
+              <li>Lead qualification logic</li>
+              <li>Handover docs</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section panel">
+        <div class="bottom">
+          <div class="script-box" id="script">
+            <h4>Outreach script</h4>
+            <pre>Hi, I built a simple WhatsApp lead-capture system for travel and visa businesses.
+It includes a landing page, a fast reply flow, and a lead tracking sheet.
+
+If you want, I can send you a sample page today.
+The intro price is $149 for the audit/copy version or $299 for the full launch.</pre>
+          </div>
+          <div class="note">
+            <h4>Best next move</h4>
+            <p>
+              Send this only to businesses that already answer inquiries by WhatsApp or have a visible
+              travel/visa sales process. They are the fastest to understand the value.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">If a buyer wants a demo, show this page first and then send the Arabic version.</div>
+    </div>
+  </body>
+</html>
