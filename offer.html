@@ -499,6 +499,90 @@
         line-height: 1.8;
       }
 
+      .sample-grid {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .sample-copy {
+        display: grid;
+        gap: 14px;
+      }
+
+      .sample-clip {
+        padding: 18px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(16, 32, 51, 0.08);
+      }
+
+      .sample-clip h4 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+
+      .sample-clip p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+      }
+
+      .sample-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .sample-video {
+        padding: 18px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(16, 32, 51, 0.08);
+        box-shadow: 0 18px 40px rgba(16, 32, 51, 0.08);
+      }
+
+      .phone-frame {
+        padding: 14px;
+        border-radius: 28px;
+        background: linear-gradient(180deg, rgba(16, 32, 51, 0.96), rgba(16, 32, 51, 0.78));
+        border: 1px solid rgba(16, 32, 51, 0.08);
+      }
+
+      .phone-frame video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 9 / 16;
+        object-fit: cover;
+        border-radius: 20px;
+        background: #000;
+      }
+
+      .sample-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .sample-meta span {
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(47, 95, 145, 0.08);
+        color: var(--blue-2);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .sample-caption {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.7;
+      }
+
       .footer {
         margin-top: 22px;
         padding: 18px 8px 4px;
@@ -525,7 +609,8 @@
         }
 
         .stat-row,
-        .grid-2 {
+        .grid-2,
+        .sample-grid {
           grid-template-columns: 1fr;
         }
       }
@@ -555,6 +640,10 @@
         }
 
         .cta-row {
+          display: grid;
+        }
+
+        .sample-actions {
           display: grid;
         }
       }
@@ -737,6 +826,59 @@
             <div class="tag">品牌语境</div>
             <h4>签证流程、材料、跟进、风险、财务</h4>
             <p>你的现成内容不是泛内容，而是业务流程语言，客户更容易判断“这就是给我们做的”。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel section">
+        <div class="section-head">
+          <div>
+            <h3>样片预览</h3>
+            <p>下面这条是我刚为你做好的访华签证口播样片，适合直接发给客户看风格，或者作为你自己的作品集展示。</p>
+          </div>
+        </div>
+
+        <div class="sample-grid">
+          <div class="sample-copy">
+            <div class="sample-clip">
+              <div class="tag">成片示例</div>
+              <h4>访华签证口播视频</h4>
+              <p>
+                47 秒竖屏口播，适合发到 WhatsApp、Instagram Reels、TikTok 或客户私聊里。先让对方看见你能交付什么，再谈价格。
+              </p>
+            </div>
+
+            <div class="sample-clip">
+              <div class="tag">可复用模板</div>
+              <h4>同一套结构，可换国家、换签证、换 CTA</h4>
+              <p>
+                这类口播视频的价值在于模板化：把国家名、签证类型、材料重点和 CTA 换掉，就能继续批量出片。
+              </p>
+            </div>
+
+            <div class="sample-actions">
+              <a class="btn btn-primary" href="assets/china-visa-leadgen.mp4" download>下载样片</a>
+              <a class="btn btn-secondary" href="#outreach">看外联话术</a>
+            </div>
+          </div>
+
+          <div class="sample-video">
+            <div class="phone-frame">
+              <video controls playsinline preload="metadata" poster="assets/china-visa-leadgen-preview.png">
+                <source src="assets/china-visa-leadgen.mp4" type="video/mp4" />
+                <track kind="captions" src="assets/china-visa-leadgen.vtt" srclang="zh" label="中文" default />
+                你的浏览器不支持视频播放。
+              </video>
+            </div>
+            <div class="sample-meta">
+              <span>9:16 竖屏</span>
+              <span>47 秒</span>
+              <span>中文口播</span>
+              <span>带字幕</span>
+            </div>
+            <p class="sample-caption">
+              这条样片已经按短视频展示方式包装好，可直接发给客户做样板，也可以继续改成别的国家和签证类型。
+            </p>
           </div>
         </div>
       </section>
